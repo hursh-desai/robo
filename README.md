@@ -1,2 +1,2 @@
 # robo
-Crypto Trading Algorithm
+Crypto Robo-Trading Algo
