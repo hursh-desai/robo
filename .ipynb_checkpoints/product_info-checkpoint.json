@@ -1,0 +1,30 @@
+{
+    "AVAX-USD": {
+        "stop_loss_id": "",
+        "sell_id": "",
+        "running_avg": 0.0,
+        "balance": 0.0,
+        "price": 0.0
+    },
+    "MANA-USD": {
+        "stop_loss_id": "",
+        "sell_id": "",
+        "running_avg": 0.0,
+        "balance": 0.0,
+        "price": 0.0
+    },
+    "ALGO-USD": {
+        "stop_loss_id": "",
+        "sell_id": "",
+        "running_avg": 0.0,
+        "balance": 0.0,
+        "price": 0.0
+    },
+    "GALA-USD": {
+        "stop_loss_id": "nothing",
+        "sell_id": "nothing",
+        "running_avg": 0.0,
+        "balance": 0.0,
+        "price": 0.38003
+    }
+}
