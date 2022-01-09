@@ -1,8 +1,10 @@
 import smtplib
 from email.message import EmailMessage
 import os
+from dotenv import load_dotenv
+load_dotenv()
 gmail_user = 'bot.hursh@gmail.com'
-gmail_password = os.environ.get('API_PASSPHRASE')
+gmail_password = os.getenv('MAIL_PASSPHRASE')
 to = 'hurshdesai8@gmail.com'
 
 def send_email(msg, subject):
@@ -120,10 +122,10 @@ def place_order(side, product_id, size, price, round_base, round_quote, stop='')
     return order_id
 
 def place_orders(product_id, new_basis, balance, money_limit, round_base, round_quote):
-    sell_size = balance * .34
+    sell_size = balance * .35
     sell_price = new_basis * 1.06
     
-    stop_loss_size = balance *.64
+    stop_loss_size = balance *.6
     stop_loss_price = new_basis * .76
     
     first_buy_price = new_basis * .94
@@ -156,7 +158,9 @@ class Ticker(Client):
         balance_as_list = [x['balance'] for x in accounts.json() if x['currency'] == currency_pair[0]]
         update(product_id, 'balance', float(balance_as_list[0]))
         
-        update(product_id, 'running_avg', (get(product_id, 'balance') - old_bal) * get(product_id, 'price'))
+        running_avg = get(product_id, 'running_avg')
+        running_avg += (get(product_id, 'balance') - old_bal) * get(product_id, 'price')
+        update(product_id, 'running_avg', running_avg)
 
         new_sell_price = (get(product_id, 'running_avg') * 1.06)/get(product_id, 'balance')
     # cancel and place sell order
